@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "251327944354",
+    "project_id": "aramanservices-79ed6",
+    "storage_bucket": "aramanservices-79ed6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251327944354:android:6f209093b50566671169fb",
+        "android_client_info": {
+          "package_name": "com.araman.lite"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQFM9cYYD4Uno7Fm7SWq0dOgO-trI5vGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
