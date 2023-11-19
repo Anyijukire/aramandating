@@ -94,7 +94,8 @@ class Carousel extends StatefulWidget {
   //On image change event, passes previous image index and current image index as arguments
   final void Function(int, int)? onImageChange;
 
-  const Carousel({Key? key, 
+  const Carousel({
+    Key? key,
     this.images,
     this.animationCurve = Curves.ease,
     this.animationDuration = const Duration(milliseconds: 300),
@@ -211,11 +212,7 @@ class CarouselState extends State<Carousel> {
                 );
               } else if (netImage is FadeInImage) {
                 return ClipRRect(
-                  borderRadius: widget.borderRadius!
-                      ? BorderRadius.all(widget.radius != null
-                          ? widget.radius!
-                          : const Radius.circular(8.0))
-                      : null,
+                  borderRadius: const BorderRadius.all(Radius.circular(6.0)),
                   child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -316,7 +313,7 @@ class CarouselState extends State<Carousel> {
               children: listImages,
               onPageChanged: (currentPage) {
                 if (widget.onImageChange != null) {
-                   widget.onImageChange!(_currentImageIndex, currentPage);
+                  widget.onImageChange!(_currentImageIndex, currentPage);
                 }
 
                 _currentImageIndex = currentPage;
@@ -341,7 +338,8 @@ class CarouselState extends State<Carousel> {
                 right: right,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: widget.dotBgColor ?? Colors.grey[800]!.withOpacity(0.5),
+                    color:
+                        widget.dotBgColor ?? Colors.grey[800]!.withOpacity(0.5),
                     borderRadius: widget.borderRadius!
                         ? (widget.noRadiusForIndicator!
                             ? null
@@ -384,7 +382,8 @@ class CarouselState extends State<Carousel> {
 /// An indicator showing the currently selected page of a PageController
 class DotsIndicator extends AnimatedWidget {
   DotsIndicator(
-      {Key? key, this.controller,
+      {Key? key,
+      this.controller,
       this.itemCount,
       this.onPageSelected,
       this.color,
