@@ -37,13 +37,6 @@ if (keystorePropertiesFile.exists()) {
 }
 
 
-// def keystorePropertiesFile = rootProject.file("keystore.properties")
-// def keystoreProperties = new Properties()
-
-// if (keystorePropertiesFile.exists()) {
-//     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-// }
-
 android {
     compileSdkVersion 33 // flutter.compileSdkVersion
 
@@ -70,19 +63,6 @@ android {
     }
 
     // Properties for Release 
-
-    // signingConfigs {
-    //    release {
-    //         storeFile file(project.property("storeFile"))
-    //         storePassword project.property("storePassword")
-    //         keyAlias project.property("keyAlias")
-    //         keyPassword project.property("keyPassword")
-    //     //    keyAlias keystoreProperties['keyAlias']
-    //     //    keyPassword keystoreProperties['araman@2023']
-    //     //    storeFile keystoreProperties['keystore.jks'] ? file(keystoreProperties['keystore.jks']) : null
-    //     //    storePassword keystoreProperties['araman@2023']
-    //    }
-    // }
     signingConfigs {
         release {
             keyAlias keystoreProperties['keyAlias']
