@@ -13,14 +13,14 @@ class DeleteAccountButton extends StatelessWidget {
     return Center(
       child: DefaultButton(
         child: Text(i18n.translate("delete_account"),
-            style: const TextStyle(fontSize: 18)),
+            style: const TextStyle(fontSize: 18, color: Colors.white)),
         onPressed: () {
           /// Delete account
           ///
           /// Confirm dialog
           infoDialog(context,
               icon: const CircleAvatar(
-                backgroundColor: Colors.red,
+                backgroundColor: Colors.white,
                 child: Icon(Icons.close, color: Colors.white),
               ),
               title: '${i18n.translate("delete_account")} ?',

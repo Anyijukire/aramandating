@@ -74,7 +74,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   width: double.maxFinite,
                   child: DefaultButton(
                     child: Text(_i18n.translate("sign_in_with_phone_number"),
-                        style: const TextStyle(fontSize: 18)),
+                        style:
+                            const TextStyle(fontSize: 18, color: Colors.white)),
                     onPressed: () {
                       /// Go to phone number screen
                       Navigator.of(context).push(MaterialPageRoute(

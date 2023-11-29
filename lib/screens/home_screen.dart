@@ -261,6 +261,7 @@ class _HomeScreenState extends State<HomeScreen> {
           type: BottomNavigationBarType.fixed,
           elevation: Platform.isIOS ? 0 : 8,
           currentIndex: _selectedIndex,
+          backgroundColor: Colors.white,
           onTap: _onTappedNavBar,
           items: [
             /// Discover Tab

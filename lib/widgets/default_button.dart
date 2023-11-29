@@ -8,7 +8,12 @@ class DefaultButton extends StatelessWidget {
   final double? height;
 
   const DefaultButton(
-      {Key? key, required this.child, required this.onPressed, this.width, this.height}) : super(key: key);
+      {Key? key,
+      required this.child,
+      required this.onPressed,
+      this.width,
+      this.height})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +23,14 @@ class DefaultButton extends StatelessWidget {
       child: ElevatedButton(
         child: child,
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Theme.of(context).primaryColor),
-          textStyle: MaterialStateProperty.all<TextStyle>(
-            const TextStyle(color: Colors.white)
-          ),
-          shape: MaterialStateProperty.all<OutlinedBorder>(
-            RoundedRectangleBorder(
+            backgroundColor: MaterialStateProperty.all<Color>(
+                Theme.of(context).primaryColor),
+            textStyle: MaterialStateProperty.all<TextStyle>(
+                const TextStyle(color: Colors.white)),
+            shape: MaterialStateProperty.all<OutlinedBorder>(
+                RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(28),
-            )
-          )
-        ),
+            ))),
         onPressed: onPressed,
       ),
     );

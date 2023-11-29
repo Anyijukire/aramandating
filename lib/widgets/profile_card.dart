@@ -211,7 +211,7 @@ class ProfileCard extends StatelessWidget {
                   child: Container(
                       padding: const EdgeInsets.all(7),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
+                        color: Colors.white,
                         shape: BoxShape.circle,
                       ),
                       child: const SvgIcon("assets/icons/message_icon.svg",
@@ -224,8 +224,7 @@ class ProfileCard extends StatelessWidget {
               ? Positioned(
                   right: 0,
                   child: IconButton(
-                      icon: Icon(Icons.flag,
-                          color: Theme.of(context).primaryColor, size: 32),
+                      icon: Icon(Icons.flag, color: Colors.white, size: 32),
                       onPressed: () =>
                           ReportDialog(userId: user.userId).show()))
               : const SizedBox(width: 0, height: 0),

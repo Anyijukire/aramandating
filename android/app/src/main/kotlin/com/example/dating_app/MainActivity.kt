@@ -1,4 +1,4 @@
-package com.araman.lite
+package com.aramanservices.lite
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -329,7 +329,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       width: double.maxFinite,
                       child: DefaultButton(
                         child: Text(_i18n.translate("CREATE_ACCOUNT"),
-                            style: const TextStyle(fontSize: 18)),
+                            style: const TextStyle(
+                                fontSize: 18, color: Colors.white)),
                         onPressed: () {
                           /// Sign up
                           _createAccount();
