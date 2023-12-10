@@ -74,6 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     _i18n = AppLocalizations.of(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           color: Colors.white,

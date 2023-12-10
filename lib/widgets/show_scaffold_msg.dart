@@ -11,6 +11,6 @@ void showScaffoldMessage({
   scaffoldMessengerKey.currentState?.showSnackBar(SnackBar(
     content: Text(message, style: const TextStyle(fontSize: 18)),
     duration: duration ?? const Duration(seconds: 5),
-    backgroundColor: bgcolor ?? APP_PRIMARY_COLOR,
+    backgroundColor: Colors.white,
   ));
 }

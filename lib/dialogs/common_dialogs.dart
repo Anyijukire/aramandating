@@ -100,8 +100,7 @@ void _buildDialog(
 }) {
   // Variables
   final i18n = AppLocalizations.of(context);
-  final _textStyle =
-      TextStyle(fontSize: 18, color: Theme.of(context).primaryColor);
+  final _textStyle = TextStyle(fontSize: 18, color: Colors.white);
   late Widget _icon;
   late String _title;
 
@@ -152,12 +151,13 @@ void _buildDialog(
             children: [
               _icon,
               const SizedBox(width: 10),
-              Expanded(child: Text(_title, style: const TextStyle(fontSize: 22)))
+              Expanded(
+                  child: Text(_title, style: const TextStyle(fontSize: 22)))
             ],
           ),
           content: Text(
             message,
-            style: const TextStyle(fontSize: 18),
+            style: TextStyle(fontSize: 18, color: Colors.white),
           ),
           actions: [
             /// Negative button
@@ -166,7 +166,8 @@ void _buildDialog(
                 : TextButton(
                     onPressed: negativeAction,
                     child: Text(negativeText ?? i18n.translate("CANCEL"),
-                        style: const TextStyle(fontSize: 18, color: Colors.grey))),
+                        style:
+                            const TextStyle(fontSize: 18, color: Colors.grey))),
 
             /// Positive button
             TextButton(

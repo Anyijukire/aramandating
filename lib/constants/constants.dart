@@ -7,21 +7,21 @@ import 'package:flutter/material.dart';
 const String APP_NAME = "Araman Services";
 const Color APP_PRIMARY_COLOR = Color(0xffe000b9);
 const Color APP_ACCENT_COLOR = Color(0xfff3c500);
-const String APP_VERSION_NAME = "Android v1.0.0 & iOS v1.0.0";
+const String APP_VERSION_NAME = "Android v1.0.0";
 const int ANDROID_APP_VERSION_NUMBER = 1; // Google Play Version Number
 const int IOS_APP_VERSION_NUMBER = 1; // App Store Version Number
 //
 // Add Google Maps - API KEY required for Passport feature
 //
-const String ANDROID_MAPS_API_KEY = "YOUR ANDROID API KEY";
+const String ANDROID_MAPS_API_KEY = "AIzaSyAB6K5_kZzkA4JNvcfceJaRSijIW7TeUys";
 const String IOS_MAPS_API_KEY = "YOUR IOS API KEY";
 //
 // GOOGLE ADMOB INTERSTITIAL IDS
 //
 // For Android Platform
-const String ANDROID_INTERSTITIAL_ID = "YOUR ANDROID AD ID";
+const String ANDROID_INTERSTITIAL_ID = "ca-app-pub-2870624016178065/7582400563";
 // For IOS Platform
-const String IOS_INTERSTITIAL_ID = "YOUR iOS AD ID";
+const String IOS_INTERSTITIAL_ID = "ca-app-pub-2870624016178065/7582400563";
 
 /// List of Supported Locales
 /// Add your new supported Locale to the array list.
@@ -60,18 +60,21 @@ const String C_BLOCKED_USERS = 'BlockedUsers';
 ///
 const String ANDROID_APP_CURRENT_VERSION = "android_app_current_version";
 const String IOS_APP_CURRENT_VERSION = "ios_app_current_version";
-const String ANDROID_PACKAGE_NAME = "android_package_name";
+const String ANDROID_PACKAGE_NAME = "com.aramanservices.lite";
 const String IOS_APP_ID = "ios_app_id";
-const String APP_EMAIL = "app_email";
-const String PRIVACY_POLICY_URL = "privacy_policy_url";
-const String TERMS_OF_SERVICE_URL = "terms_of_service_url";
+const String APP_EMAIL = "aramandating@gmail.com";
+const String PRIVACY_POLICY_URL =
+    "https://araman.rainscriptservers.com/policy.php";
+const String TERMS_OF_SERVICE_URL =
+    "https://araman.rainscriptservers.com/tos.php";
 const String FIREBASE_SERVER_KEY = "firebase_server_key";
 const String STORE_SUBSCRIPTION_IDS = "store_subscription_ids";
 const String FREE_ACCOUNT_MAX_DISTANCE = "free_account_max_distance";
 const String VIP_ACCOUNT_MAX_DISTANCE = "vip_account_max_distance";
 // Admob variables
-const String ADMOB_APP_ID = "admob_app_id";
-const String ADMOB_INTERSTITIAL_AD_ID = "admob_interstitial_ad_id";
+const String ADMOB_APP_ID = "ca-app-pub-2870624016178065~5347157455";
+const String ADMOB_INTERSTITIAL_AD_ID =
+    "ca-app-pub-2870624016178065/7582400563";
 
 /// DATABASE FIELDS FOR USER COLLECTION  ///
 ///
