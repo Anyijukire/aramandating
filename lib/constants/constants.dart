@@ -64,7 +64,7 @@ const String ANDROID_PACKAGE_NAME = "com.aramanservices.lite";
 const String IOS_APP_ID = "ios_app_id";
 const String APP_EMAIL = "aramandating@gmail.com";
 const String PRIVACY_POLICY_URL =
-    "https://araman.rainscriptservers.com/policy.php";
+    "https://araman.rainscriptservers.com/privacy_policy.php";
 const String TERMS_OF_SERVICE_URL =
     "https://araman.rainscriptservers.com/tos.php";
 const String FIREBASE_SERVER_KEY = "firebase_server_key";

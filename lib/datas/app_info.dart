@@ -42,7 +42,7 @@ class AppInfo {
       iOsAppId: doc[IOS_APP_ID] ?? '',
       appEmail: doc[APP_EMAIL] ?? '',
       privacyPolicyUrl: doc[PRIVACY_POLICY_URL] ??
-          'https://araman.rainscriptservers.com/policy.php',
+          'https://araman.rainscriptservers.com/privacy_policy.php',
       termsOfServicesUrl: doc[TERMS_OF_SERVICE_URL] ??
           'https://araman.rainscriptservers.com/tos.php',
       firebaseServerKey: doc[FIREBASE_SERVER_KEY] ?? '',
