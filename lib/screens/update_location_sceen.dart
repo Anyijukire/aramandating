@@ -93,47 +93,57 @@ class _UpdateLocationScreenState extends State<UpdateLocationScreen> {
         // Debug
         debugPrint("User Position result: $position");
         // Get user readable address
-        final Placemark place = await _appHelper.getUserAddress(
-            position.latitude, position.longitude);
+        try {
+          final Placemark place = await _appHelper.getUserAddress(
+              position.latitude, position.longitude);
+          debugPrint("User Address result: $place");
+          // Rest of the code...
 
-        // Debug placemark address
-        debugPrint("User Address result: $place");
+          // Get locality
+          String? locality;
+          // Check locality
+          if (place.locality == '') {
+            locality = place.administrativeArea;
+          } else {
+            locality = place.locality;
+          }
 
-        // Get locality
-        String? locality;
-        // Check locality
-        if (place.locality == '') {
-          locality = place.administrativeArea;
-        } else {
-          locality = place.locality;
+          // Update User location
+          await _appHelper.updateUserLocation(
+              userId: UserModel().getFirebaseUser!.uid, // widget.userId
+              latitude: position.latitude,
+              longitude: position.longitude,
+              country: place.country.toString(),
+              locality: locality.toString());
+
+          // Show success message
+          successDialog(context,
+              message: '${_i18n.translate("location_updated_successfully")}\n\n'
+                  '${place.country}, $locality', positiveAction: () {
+            // Check
+            if (widget.isSignUpProcess) {
+              // Go to home screen
+              _nextScreen(const HomeScreen());
+            } else {
+              // Close dialog
+              Navigator.of(context).pop();
+              // Close current screen
+              Navigator.of(context).pop();
+            }
+          });
+
+          // Hide progress dialog
+          await _pr.hide();
+        } catch (e) {
+          debugPrint("Error getting user address: $e");
+          // Handle the error, show a message to the user, or take appropriate action.
         }
 
-        // Update User location
-        await _appHelper.updateUserLocation(
-            userId: UserModel().getFirebaseUser!.uid, // widget.userId
-            latitude: position.latitude,
-            longitude: position.longitude,
-            country: place.country.toString(),
-            locality: locality.toString());
+        // final Placemark place = await _appHelper.getUserAddress(
+        //     position.latitude, position.longitude);
 
-        // Hide progress dialog
-        await _pr.hide();
-
-        // Show success message
-        successDialog(context,
-            message: '${_i18n.translate("location_updated_successfully")}\n\n'
-                '${place.country}, $locality', positiveAction: () {
-          // Check
-          if (widget.isSignUpProcess) {
-            // Go to home screen
-            _nextScreen(const HomeScreen());
-          } else {
-            // Close dialog
-            Navigator.of(context).pop();
-            // Close current screen
-            Navigator.of(context).pop();
-          }
-        });
+        // // Debug placemark address
+        // debugPrint("User Address result: $place");
       }, onTimeoutException: (exception) async {
         // Show timeout error message
         _showTimeoutErrorMessage(context);
