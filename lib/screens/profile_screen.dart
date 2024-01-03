@@ -15,6 +15,7 @@ import 'package:dating_app/widgets/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import '../helpers/app_ad_helper.dart';
 
 // ignore: must_be_immutable
 class ProfileScreen extends StatefulWidget {
@@ -51,13 +52,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
     // TODO: uncomment the line below if you want to display the Ads
     // Note: before make sure to add your Interstial AD ID
-    // AppAdHelper().showInterstitialAd();
+    AppAdHelper().showInterstitialAd();
   }
 
   @override
   void dispose() {
     // TODO: uncomment the line below to dispose it.
-    // AppAdHelper().disposeInterstitialAd();
+    AppAdHelper().disposeInterstitialAd();
     super.dispose();
   }
 
