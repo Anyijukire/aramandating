@@ -9,6 +9,18 @@ class AppAdHelper {
   // Local Variables
   static InterstitialAd? _interstitialAd;
   //
+  static BannerAd? _bannerAd;
+  final AdSize _adSize = AdSize.banner;
+
+  String get _bannerAdUnitId {
+    if (Platform.isAndroid) {
+      return 'ca-app-pub-2870624016178065/1235687902';
+    } else if (Platform.isIOS) {
+      return 'ca-app-pub-2870624016178065/1235687902';
+    } else {
+      throw UnsupportedError("Unsupported platform");
+    }
+  }
 
   // Get Interstitial Ad ID
   static String get _interstitialID {
@@ -80,5 +92,47 @@ class AppAdHelper {
   void disposeInterstitialAd() {
     _interstitialAd?.dispose();
     _interstitialAd = null;
+  }
+
+  Future<void> _createBannerAd() async {
+    _bannerAd = BannerAd(
+      adUnitId: _bannerAdUnitId,
+      size: _adSize,
+      request: const AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) {
+          debugPrint('Banner ad loaded.');
+        },
+        onAdFailedToLoad: (ad, error) {
+          debugPrint('Banner ad failed to load: $error');
+          ad.dispose();
+          _createBannerAd(); // Retry creating the banner ad on failure
+        },
+        onAdOpened: (_) {
+          debugPrint('Banner ad opened.');
+        },
+        onAdClosed: (_) {
+          debugPrint('Banner ad closed.');
+        },
+        onAdImpression: (_) {
+          debugPrint('Banner ad impression.');
+        },
+        onAdClicked: (_) {
+          debugPrint('Banner ad clicked.');
+        },
+      ),
+    );
+
+    await _bannerAd!.load();
+  }
+
+  // Show Banner Ad
+  Widget showBannerAd() {
+    return AdWidget(ad: _bannerAd!);
+  }
+
+  // Initialize and Show Banner Ad
+  void initializeAndShowBannerAd() {
+    _createBannerAd();
   }
 }

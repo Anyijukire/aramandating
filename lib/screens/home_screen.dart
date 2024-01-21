@@ -19,7 +19,10 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:dating_app/constants/constants.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+
+import '../helpers/app_ad_helper.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -216,6 +219,10 @@ class _HomeScreenState extends State<HomeScreen> {
     /// Restore VIP Subscription
     AppHelper().restoreVipAccount();
 
+    AppAdHelper().showInterstitialAd();
+    AppAdHelper().initializeAndShowBannerAd();
+    AppAdHelper().showBannerAd();
+
     /// Init streams
     _getCurrentUserUpdates();
     _handlePurchaseUpdates();
@@ -231,6 +238,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // Close streams
     _userStream.drain();
     _inAppPurchaseStream.cancel();
+    AppAdHelper().disposeInterstitialAd();
   }
 
   @override

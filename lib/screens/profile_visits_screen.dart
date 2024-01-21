@@ -15,6 +15,8 @@ import 'package:dating_app/widgets/profile_card.dart';
 import 'package:dating_app/widgets/users_grid.dart';
 import 'package:flutter/material.dart';
 
+import '../helpers/app_ad_helper.dart';
+
 class ProfileVisitsScreen extends StatefulWidget {
   const ProfileVisitsScreen({Key? key}) : super(key: key);
 
@@ -87,11 +89,16 @@ class _ProfileVisitsScreenState extends State<ProfileVisitsScreen> {
 
     /// Listener
     _loadMoreUsersListener();
+
+    AppAdHelper().showInterstitialAd();
+    AppAdHelper().initializeAndShowBannerAd();
+    AppAdHelper().showBannerAd();
   }
 
   @override
   void dispose() {
     _gridViewController.dispose();
+    AppAdHelper().disposeInterstitialAd();
     super.dispose();
   }
 
@@ -146,7 +153,9 @@ class _ProfileVisitsScreenState extends State<ProfileVisitsScreen> {
                   if (!snapshot.hasData) {
                     return const LoadingCard();
                   } else if (snapshot.data?.data() == null) {
-                    AppHelper().ambiguate(WidgetsBinding.instance)!.addPostFrameCallback((_) {
+                    AppHelper()
+                        .ambiguate(WidgetsBinding.instance)!
+                        .addPostFrameCallback((_) {
                       if (mounted) {
                         setState(() {
                           _userVisits!.removeAt(index);

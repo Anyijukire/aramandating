@@ -15,6 +15,8 @@ import 'package:dating_app/widgets/processing.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
+import '../helpers/app_ad_helper.dart';
+
 class DeleteAccountScreen extends StatefulWidget {
   const DeleteAccountScreen({Key? key}) : super(key: key);
 
@@ -131,6 +133,16 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
         });
       });
     });
+
+    AppAdHelper().showInterstitialAd();
+    AppAdHelper().initializeAndShowBannerAd();
+    AppAdHelper().showBannerAd();
+  }
+
+  @override
+  void dispose() {
+    AppAdHelper().disposeInterstitialAd();
+    super.dispose();
   }
 
   @override

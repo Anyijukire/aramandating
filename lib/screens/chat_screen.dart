@@ -22,6 +22,8 @@ import 'package:dating_app/widgets/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
+import '../helpers/app_ad_helper.dart';
+
 class ChatScreen extends StatefulWidget {
   /// Get user object
   final User user;
@@ -248,6 +250,10 @@ class _ChatScreenState extends State<ChatScreen> {
     _messages = _messagesApi.getMessages(widget.user.userId);
     // Check the blocked user
     _checkBlockedUser();
+
+    AppAdHelper().showInterstitialAd();
+    AppAdHelper().initializeAndShowBannerAd();
+    AppAdHelper().showBannerAd();
   }
 
   @override
@@ -255,6 +261,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _messages.drain();
     _textController.dispose();
     _messagesController.dispose();
+    AppAdHelper().disposeInterstitialAd();
     super.dispose();
   }
 

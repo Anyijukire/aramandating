@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:place_picker/place_picker.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+import '../helpers/app_ad_helper.dart';
+
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
@@ -66,6 +68,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
   void initState() {
     super.initState();
     initUserSettings();
+
+    AppAdHelper().showInterstitialAd();
+    AppAdHelper().initializeAndShowBannerAd();
+    AppAdHelper().showBannerAd();
+  }
+
+  @override
+  void dispose() {
+    AppAdHelper().disposeInterstitialAd();
+    super.dispose();
   }
 
   // Go to Passport screen

@@ -16,6 +16,8 @@ import 'package:dating_app/widgets/profile_card.dart';
 import 'package:dating_app/widgets/users_grid.dart';
 import 'package:flutter/material.dart';
 
+import '../helpers/app_ad_helper.dart';
+
 class ProfileLikesScreen extends StatefulWidget {
   const ProfileLikesScreen({Key? key}) : super(key: key);
 
@@ -89,11 +91,16 @@ class _ProfileLikesScreenState extends State<ProfileLikesScreen> {
 
     /// Listener
     _loadMoreUsersListener();
+
+    AppAdHelper().showInterstitialAd();
+    AppAdHelper().initializeAndShowBannerAd();
+    AppAdHelper().showBannerAd();
   }
 
   @override
   void dispose() {
     _gridViewController.dispose();
+    AppAdHelper().disposeInterstitialAd();
     super.dispose();
   }
 
@@ -148,7 +155,9 @@ class _ProfileLikesScreenState extends State<ProfileLikesScreen> {
                   if (!snapshot.hasData) {
                     return const LoadingCard();
                   } else if (snapshot.data?.data() == null) {
-                    AppHelper().ambiguate(WidgetsBinding.instance)!.addPostFrameCallback((_) {
+                    AppHelper()
+                        .ambiguate(WidgetsBinding.instance)!
+                        .addPostFrameCallback((_) {
                       if (mounted) {
                         setState(() {
                           _likedMeUsers!.removeAt(index);

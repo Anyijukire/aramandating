@@ -53,6 +53,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // TODO: uncomment the line below if you want to display the Ads
     // Note: before make sure to add your Interstial AD ID
     AppAdHelper().showInterstitialAd();
+    AppAdHelper().initializeAndShowBannerAd();
+    AppAdHelper().showBannerAd();
   }
 
   @override

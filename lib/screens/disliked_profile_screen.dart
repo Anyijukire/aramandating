@@ -16,6 +16,8 @@ import 'package:dating_app/widgets/profile_card.dart';
 import 'package:dating_app/widgets/users_grid.dart';
 import 'package:flutter/material.dart';
 
+import '../helpers/app_ad_helper.dart';
+
 class DislikedProfilesScreen extends StatefulWidget {
   const DislikedProfilesScreen({Key? key}) : super(key: key);
 
@@ -90,12 +92,16 @@ class _DislikedProfilesScreenState extends State<DislikedProfilesScreen> {
 
     /// Listener
     _loadMoreUsersListener();
+    AppAdHelper().showInterstitialAd();
+    AppAdHelper().initializeAndShowBannerAd();
+    AppAdHelper().showBannerAd();
   }
 
   @override
   void dispose() {
     _gridViewController.dispose();
     super.dispose();
+    AppAdHelper().disposeInterstitialAd();
   }
 
   @override
@@ -149,7 +155,9 @@ class _DislikedProfilesScreenState extends State<DislikedProfilesScreen> {
                   if (!snapshot.hasData) {
                     return const LoadingCard();
                   } else if (snapshot.data?.data() == null) {
-                    AppHelper().ambiguate(WidgetsBinding.instance)!.addPostFrameCallback((_) {
+                    AppHelper()
+                        .ambiguate(WidgetsBinding.instance)!
+                        .addPostFrameCallback((_) {
                       if (mounted) {
                         setState(() {
                           _dislikedUsers!.removeAt(index);
