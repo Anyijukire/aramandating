@@ -128,11 +128,13 @@ class AppAdHelper {
 
   // Show Banner Ad
   Widget showBannerAd() {
+    debugPrint('Banner add showing');
     return AdWidget(ad: _bannerAd!);
   }
 
   // Initialize and Show Banner Ad
   void initializeAndShowBannerAd() {
+    debugPrint('Banner add showinggggggg');
     _createBannerAd();
   }
 }

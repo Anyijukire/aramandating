@@ -40,7 +40,7 @@ dependencies:
   # FIREBASE Packages Section
   firebase_core: 2.13.1 # Firebase Core package required to use other firebase services
   firebase_auth: 4.6.2  # Used to Authenticate User Account (e.g. Sign in with Phone number, etc..)
-  cloud_firestore: 4.8.0 # Used to Save User Data in Database
+  cloud_firestore: ^4.8.0 # Used to Save User Data in Database
   firebase_messaging: 14.6.2 # Used to Send Push Notifications (e.g. New like, Visit and Message)
   firebase_storage: 11.2.2 # Used to Save User Profile Images on Cloud Storage    
   google_mobile_ads: 2.3.0 # Used to Show Admob Ads in App (e.g. Banner Ads, Interstitial Ads (full screen), Native Ads and Rewarded Video Ads)
