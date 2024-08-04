@@ -2,5 +2,28 @@
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "aramanservices-79ed6",
+          "appId": "1:251327944354:android:3393b757429e4b4a1169fb",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "aramanservices-79ed6",
+          "configurations": {
+            "android": "1:251327944354:android:3393b757429e4b4a1169fb",
+            "ios": "1:251327944354:ios:0a35bb1cfe31f0d91169fb"
+          }
+        }
+      }
+    }
+  },
+  "database": {
+    "rules": "database.rules.json"
   }
 }

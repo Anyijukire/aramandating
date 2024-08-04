@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCQFM9cYYD4Uno7Fm7SWq0dOgO-trI5vGc',
-    appId: '1:251327944354:android:4ebee6e8f78ca93c1169fb',
+    appId: '1:251327944354:android:3393b757429e4b4a1169fb',
     messagingSenderId: '251327944354',
     projectId: 'aramanservices-79ed6',
     storageBucket: 'aramanservices-79ed6.appspot.com',
@@ -59,12 +59,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyC3gwnSrg-C1GxHMzTvX3OXchyb0jQjDKs',
-    appId: '1:251327944354:ios:6d84ca33daa0cbdd1169fb',
+    appId: '1:251327944354:ios:0a35bb1cfe31f0d91169fb',
     messagingSenderId: '251327944354',
     projectId: 'aramanservices-79ed6',
     storageBucket: 'aramanservices-79ed6.appspot.com',
     androidClientId: '251327944354-9a652pell05s3sj3799j1v36pnik1epg.apps.googleusercontent.com',
-    iosClientId: '251327944354-40249mdnvudj84e5v9r2g8d552gmt9v9.apps.googleusercontent.com',
-    iosBundleId: 'com.aramanservices.lite',
+    iosClientId: '251327944354-64jkkp7eeqfc9ql5a2prnul9j06vp5ke.apps.googleusercontent.com',
+    iosBundleId: 'com.araman.app',
   );
+
 }

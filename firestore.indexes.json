@@ -1,4 +1,101 @@
 {
-  "indexes": [],
+  "indexes": [
+    {
+      "collectionGroup": "Dislikes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "disliked_by_user_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Likes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "liked_user_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Notifications",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "n_receiver_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user_gender",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "user_level",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "user_status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "user_geo_point.geohash",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user_level",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "user_status",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "user_geo_point.geohash",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Visits",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "visited_user_id",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
   "fieldOverrides": []
 }

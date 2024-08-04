@@ -1,7 +1,7 @@
 flutter_application_id:
   android:
-    id: "com.aramanservices.lite"
+    id: "com.araman.app"
     name: "Araman"
   ios:
-    id: "com.aramanservices.lite"
+    id: "com.araman.app"
     name: "Araman"

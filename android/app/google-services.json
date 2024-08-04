@@ -1,10 +1,55 @@
 {
   "project_info": {
     "project_number": "251327944354",
+    "firebase_url": "https://aramanservices-79ed6-default-rtdb.firebaseio.com",
     "project_id": "aramanservices-79ed6",
     "storage_bucket": "aramanservices-79ed6.appspot.com"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251327944354:android:3393b757429e4b4a1169fb",
+        "android_client_info": {
+          "package_name": "com.araman.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251327944354-a6ttq65j0sfbgc8dqmoje0hj5mv9qom6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.araman.app",
+            "certificate_hash": "80b831d02a9676bf8f456aef223cb467a2369405"
+          }
+        },
+        {
+          "client_id": "251327944354-7rsgg73u62u893r7pi58r28n8atjs47g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQFM9cYYD4Uno7Fm7SWq0dOgO-trI5vGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251327944354-7rsgg73u62u893r7pi58r28n8atjs47g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "251327944354-40249mdnvudj84e5v9r2g8d552gmt9v9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.aramanservices.lite"
+              }
+            }
+          ]
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:251327944354:android:4ebee6e8f78ca93c1169fb",
