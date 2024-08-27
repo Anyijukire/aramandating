@@ -18,7 +18,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
-
   // Initialized before calling runApp to init firebase app
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -90,13 +89,23 @@ class MyApp extends StatelessWidget {
             return supportedLocales.first;
           },
           home: const SplashScreen(),
-          theme: _appTheme(),
+          // theme: _appTheme(),
+          theme: ThemeData(
+            brightness: Brightness.light,
+            primarySwatch: Colors.blue,
+          ),
+          darkTheme: ThemeData(
+            brightness: Brightness.dark,
+            primarySwatch: Colors.blue,
+          ),
+          themeMode: ThemeMode.system,
         ),
       ),
     );
   }
 
   // App theme
+  //     themeMode: ThemeMode.system,
   ThemeData _appTheme() {
     return ThemeData(
       primaryColor: APP_PRIMARY_COLOR,
