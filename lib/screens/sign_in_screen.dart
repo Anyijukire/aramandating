@@ -73,13 +73,13 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: SizedBox(
                   width: double.maxFinite,
                   child: DefaultButton(
-                    child: Text(_i18n.translate("sign_in_with_phone_number"),
+                    child: const Text("Log in",
                         style:
-                            const TextStyle(fontSize: 18, color: Colors.white)),
+                            TextStyle(fontSize: 18, color: Colors.white)),
                     onPressed: () {
                       /// Go to phone number screen
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const PhoneNumberScreen()));
+                          builder: (context) => GoogleSignin()));
                     },
                   ),
                 ),

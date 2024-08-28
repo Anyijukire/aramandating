@@ -29,8 +29,8 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
   final _formKey = GlobalKey<FormState>();
   final _scaffoldkey = GlobalKey<ScaffoldState>();
   final _numberController = TextEditingController();
-  String? _phoneCode = '+1'; // Define yor default phone code
-  final String _initialSelection = 'US'; // Define yor default country code
+  String? _phoneCode = '+256'; // Define yor default phone code
+  final String _initialSelection = 'UG'; // Define yor default country code
   late AppLocalizations _i18n;
   late ProgressDialog _pr;
 
@@ -61,15 +61,14 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                     width: 60, height: 60, color: Colors.white),
               ),
               const SizedBox(height: 10),
-              Text(_i18n.translate("sign_in_with_phone_number"),
+              Text("Enter your Phone Number",
                   textAlign: TextAlign.center,
                   style: const TextStyle(fontSize: 20)),
               const SizedBox(height: 25),
-              Text(
-                  _i18n.translate(
-                      "please_enter_your_phone_number_and_we_will_send_you_a_sms"),
+              const Text(
+                  "It's easier to match with someone when you share your phone number.",
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 18, color: Colors.grey)),
+                  style: TextStyle(fontSize: 18, color: Colors.grey)),
               const SizedBox(height: 22),
 
               /// Form
@@ -169,7 +168,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
         return null;
       }
     } catch (e) {
-      print("Error checking user existence: $e");
+       debugPrint("Error checking user existence: $e");
       return null;
     }
   }
@@ -218,7 +217,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
             bgcolor: Colors.red);
       }
     } catch (e) {
-      print("Error migrating user data: $e");
+       debugPrint("Error migrating user data: $e");
       showScaffoldMessage(
           context: context,
           message: "An error occurred during data migration.",
@@ -268,7 +267,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
             bgcolor: Colors.red);
       }
     } catch (e) {
-      print("Error creating new user: $e");
+       debugPrint("Error creating new user: $e");
       showScaffoldMessage(
           context: context,
           message: "An error occurred while creating the user account.",
@@ -277,55 +276,63 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
   }
 
   void _signIn(BuildContext context) async {
-    // Show progress dialog
-    _pr.show(_i18n.translate("processing"));
+    try {
+      // Show progress dialog
+      _pr.show(_i18n.translate("processing"));
 
-    // Get the full phone number and remove leading zero if present
-    String phoneNumber = _numberController.text.trim();
-    if (phoneNumber.startsWith('0')) {
-      phoneNumber = phoneNumber.substring(1); // Remove leading zero
-    }
-    phoneNumber = _phoneCode! + phoneNumber;
-    debugPrint(phoneNumber);
+      // Get the full phone number and remove leading zero if present
+      String phoneNumber = _numberController.text.trim();
+      if (phoneNumber.startsWith('0')) {
+        phoneNumber = phoneNumber.substring(1); // Remove leading zero
+      }
+      phoneNumber = _phoneCode! + phoneNumber;
+      debugPrint(phoneNumber);
 
-    // Perform the search for the phone number
-    DocumentSnapshot? userDoc = await _checkIfUserExists(phoneNumber);
+      // Perform the search for the phone number
+      DocumentSnapshot? userDoc = await _checkIfUserExists(phoneNumber);
 
-    // Hide the progress dialog
-    _pr.hide();
+      // Hide the progress dialog
+      _pr.hide();
 
-    if (userDoc != null) {
-      // Show success message if the user exists
-      showScaffoldMessage(
-          context: context,
-          message: "User with phone number $phoneNumber found.",
-          bgcolor: Colors.green);
+      if (userDoc != null) {
+        // Show success message if the user exists
+        showScaffoldMessage(
+            context: context,
+            message: "User with phone number $phoneNumber found.",
+            bgcolor: Colors.green);
 
-      // Check if the user is already Google verified or if the field is missing
-      if (userDoc.data() != null &&
-          (userDoc.data() as Map<String, dynamic>)
-              .containsKey('isGoogleVerified')) {
-        bool isGoogleVerified = userDoc.get('isGoogleVerified');
+        // Check if the user is already Google verified or if the field is missing
+        if (userDoc.data() != null &&
+            (userDoc.data() as Map<String, dynamic>)
+                .containsKey('isGoogleVerified')) {
+          bool isGoogleVerified = userDoc.get('isGoogleVerified');
 
-        if (isGoogleVerified) {
-          // User is already Google verified, proceed to authentication
-          await UserModel().authUserAccount(
-              updateLocationScreen: () =>
-                  _nextScreen(const UpdateLocationScreen()),
-              signUpScreen: () => _nextScreen(const SignUpScreen()),
-              homeScreen: () => _nextScreen(const HomeScreen()),
-              blockedScreen: () => _nextScreen(const BlockedAccountScreen()));
+          if (isGoogleVerified) {
+            // User is already Google verified, proceed to authentication
+            await UserModel().authUserAccount(
+                updateLocationScreen: () =>
+                    _nextScreen(const UpdateLocationScreen()),
+                signUpScreen: () => _nextScreen(const SignUpScreen()),
+                homeScreen: () => _nextScreen(const HomeScreen()),
+                blockedScreen: () => _nextScreen(const BlockedAccountScreen()));
+          } else {
+            // User is not yet Google verified, proceed with migration
+            await _handleGoogleSignInAndMigrateUser(userDoc);
+          }
         } else {
-          // User is not yet Google verified, proceed with migration
+          // Field does not exist, proceed with migration
           await _handleGoogleSignInAndMigrateUser(userDoc);
         }
       } else {
-        // Field does not exist, proceed with migration
-        await _handleGoogleSignInAndMigrateUser(userDoc);
+        // Show error message if the user does not exist
+        await _createNewUser(phoneNumber, context);
       }
-    } else {
-      // Show error message if the user does not exist
-      await _createNewUser(phoneNumber, context);
+    } catch (e) {
+      debugPrint("Error signing in: $e");
+      showScaffoldMessage(
+          context: context,
+          message: "An error occurred while signing in.",
+          bgcolor: Colors.red);
     }
   }
 
@@ -396,10 +403,12 @@ class _GoogleSigninState extends State<GoogleSignin> {
               child: Container(
                 width: 200,
                 height: 20,
-                color: Colors.white,
+                color: Colors.grey,
               ),
             ))
-          : ElevatedButton(
+          : Center(
+              // This centers the button
+              child: ElevatedButton(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -409,7 +418,7 @@ class _GoogleSigninState extends State<GoogleSignin> {
                 _signInWithGoogle(context: context);
               },
               child: Text('Continue with Google'),
-            ),
+            )),
     );
   }
 }
