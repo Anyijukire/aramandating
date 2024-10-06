@@ -65,7 +65,7 @@ class DefaultFirebaseOptions {
     storageBucket: 'aramanservices-79ed6.appspot.com',
     androidClientId: '251327944354-9a652pell05s3sj3799j1v36pnik1epg.apps.googleusercontent.com',
     iosClientId: '251327944354-64jkkp7eeqfc9ql5a2prnul9j06vp5ke.apps.googleusercontent.com',
-    iosBundleId: 'com.araman.app',
+    iosBundleId: 'com.aramanservices.lite',
   );
 
 }

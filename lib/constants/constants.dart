@@ -60,7 +60,7 @@ const String C_BLOCKED_USERS = 'BlockedUsers';
 ///
 const String ANDROID_APP_CURRENT_VERSION = "android_app_current_version";
 const String IOS_APP_CURRENT_VERSION = "ios_app_current_version";
-const String ANDROID_PACKAGE_NAME = "com.araman.app";
+const String ANDROID_PACKAGE_NAME = "com.aramanservices.lite";
 const String IOS_APP_ID = "ios_app_id";
 const String APP_EMAIL = "aramandating@gmail.com";
 const String PRIVACY_POLICY_URL =

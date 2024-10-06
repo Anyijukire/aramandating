@@ -151,7 +151,7 @@ class AppHelper {
 
     // Check device OS
     if (Platform.isAndroid) {
-      url = "https://play.google.com/store/apps/details?id=com.araman.app";
+      url = "https://play.google.com/store/apps/details?id=com.aramanservices.lite";
     } else if (Platform.isIOS) {
       url = "https://apps.apple.com/app/id$iOsAppId";
     }

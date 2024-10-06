@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "251327944354-kr1s6htegabul1nsu70fcuir34lhe1vv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.araman.app",
+            "certificate_hash": "8204e9e08561df5ec53cb1de34d6a044ebb5db74"
+          }
+        },
+        {
           "client_id": "251327944354-7rsgg73u62u893r7pi58r28n8atjs47g.apps.googleusercontent.com",
           "client_type": 3
         }

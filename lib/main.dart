@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:country_code_picker/country_localizations.dart';
 import 'package:dating_app/helpers/app_localizations.dart';
 import 'package:dating_app/models/user_model.dart';
@@ -30,6 +31,10 @@ void main() async {
 
   // Initialize Google Mobile Ads SDK
   await MobileAds.instance.initialize();
+  FirebaseFirestore.instance.settings = const Settings(
+    persistenceEnabled: true,
+    cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
+  );
 
   /// Update the iOS foreground notification presentation options to allow
   /// heads up notifications.
@@ -89,16 +94,16 @@ class MyApp extends StatelessWidget {
             return supportedLocales.first;
           },
           home: const SplashScreen(),
-          // theme: _appTheme(),
-          theme: ThemeData(
-            brightness: Brightness.light,
-            primarySwatch: Colors.blue,
-          ),
-          darkTheme: ThemeData(
-            brightness: Brightness.dark,
-            primarySwatch: Colors.blue,
-          ),
-          themeMode: ThemeMode.system,
+          theme: _appTheme(),
+          // theme: ThemeData(
+          //   brightness: Brightness.light,
+          //   primarySwatch: Colors.blue,
+          // ),
+          // darkTheme: ThemeData(
+          //   brightness: Brightness.dark,
+          //   primarySwatch: Colors.blue,
+          // ),
+          // themeMode: ThemeMode.system,
         ),
       ),
     );
