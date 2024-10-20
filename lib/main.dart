@@ -94,16 +94,16 @@ class MyApp extends StatelessWidget {
             return supportedLocales.first;
           },
           home: const SplashScreen(),
-          theme: _appTheme(),
-          // theme: ThemeData(
-          //   brightness: Brightness.light,
-          //   primarySwatch: Colors.blue,
-          // ),
-          // darkTheme: ThemeData(
-          //   brightness: Brightness.dark,
-          //   primarySwatch: Colors.blue,
-          // ),
-          // themeMode: ThemeMode.system,
+          // theme: _appTheme(),
+          theme: ThemeData(
+            brightness: Brightness.light,
+            primarySwatch: Colors.blue,
+          ),
+          darkTheme: ThemeData(
+            brightness: Brightness.dark,
+            primarySwatch: Colors.blue,
+          ),
+          themeMode: ThemeMode.system,
         ),
       ),
     );
